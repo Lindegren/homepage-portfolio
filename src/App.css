@@ -13,6 +13,46 @@
   }
 }
 
+.TaskCard {
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 1px;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.TaskTable {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  background-color: teal;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.TaskInputField {
+  width: 50vw;
+  height: 2rem;
+}
+
+.PictureContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.WeatherContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .App-header {
   min-height: 100vh;
   display: flex;
