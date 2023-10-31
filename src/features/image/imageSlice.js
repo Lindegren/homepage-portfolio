@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { UNSPLASH_ACCESS_KEY } from "../../config";
 
 export const fetchImage = createAsyncThunk(
     'image/fetchImage',
     async () => {
-        const api_url = `https://api.unsplash.com/photos/random/?count=1&client_id=${UNSPLASH_ACCESS_KEY}`;
+        const api_url = `https://api.unsplash.com/photos/random/?count=1&client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`;
         const response = await fetch(api_url);
         const json = await response.json();
         console.log(json[0].slug);

@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { WEATHER_API_KEY as API_KEY } from "../../config";
 
 const lat = 57.7089;
 const long = 11.9746;
-const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${API_KEY}`;
+const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
 export const fetchWeather = createAsyncThunk(
     'weather/fetchWeather',
