@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectQuote, fetchQuote } from './quoteSlice';
 
@@ -10,21 +10,26 @@ export default function QuoteContainer() {
     const quoteStatus = useSelector( state => state.quote.status);
     const error = useSelector(state => state.quote.error);
 
-    useDispatch(() => {
+    useEffect(() => {
       if (quoteStatus === 'idle'){
         dispatch(fetchQuote());
       }
     }, [quoteStatus, dispatch]);
 
+    const onClick = () => {
+      dispatch(fetchQuote());
+    }
+
     let content;
 
     if(quoteStatus === 'loading'){
       content = <p>We're loading...</p>
-    } else if(quoteStatus === 'successful') {
+    } else if(quoteStatus === 'succeeded') {
       content = 
       <div className='Quote'>
-        <p>{quote}</p>
-        <button onClick={dispatch(fetchQuote())} >Generate new quote</button>
+        <p className='QuoteContent'>{quote.quote.content}</p>
+        <p className='QuoteAuthor'>{quote.quote.author}</p>
+        <button onClick={onClick} >Generate new quote</button>
       </div>
     } else if(quoteStatus === 'failed'){
       content = <div>{error}</div>

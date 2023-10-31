@@ -69,7 +69,7 @@
   flex-direction: column;
 }
 
-.Quote {
+.QuoteSection {
   display: flex;
   flex-direction: row;
   border-style: solid;
