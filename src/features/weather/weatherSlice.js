@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { API_KEY } from "../../config";
 
-const API_KEY = "a75e03ef0f2e7fa233667475e63248f1";
 const lat = 57.7089;
 const long = 11.9746;
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${API_KEY}`;
@@ -20,7 +20,7 @@ const weatherSlice = createSlice({
     initialState: {
         weather: {},
         status: 'idle',
-        errror: null,
+        error: null,
     },
     extraReducers: (builder) => {
         builder
