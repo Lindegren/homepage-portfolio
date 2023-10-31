@@ -9,8 +9,8 @@ const goalsSlice = createSlice({
         addGoal: (state, action) => {
             state.goals[action.payload.id] = {...action.payload, isCompleted: false};
         },
-        markGoalCompleted: (state, action) => {
-            state.goals[action.payload.id].isCompleted = true;
+        toggleCompleted: (state, action) => {
+            state.goals[action.payload.id].isCompleted = !state.goals[action.payload.id].isCompleted;
         },
         removeGoal: (state, action) => {
             delete state.goals[action.payload.id];
@@ -20,5 +20,6 @@ const goalsSlice = createSlice({
 });
 
 export const selectGoals = (state) => state.goals.goals;
-export const {addGoal, markGoalCompleted, removeGoal} = goalsSlice.actions;
+export const checkCompleted = (id) => (state) => state.goals.goals[id].isCompleted;
+export const {addGoal, toggleCompleted, removeGoal} = goalsSlice.actions;
 export default goalsSlice.reducer;
