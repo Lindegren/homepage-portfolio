@@ -13,7 +13,7 @@
   }
 }
 
-.TaskCard {
+.Goal {
   border-style: solid;
   border-color: black;
   border-radius: 5px;
@@ -27,7 +27,7 @@
   justify-content: space-between;
 }
 
-.TaskTable {
+.Goals {
   display: flex;
   flex-direction: row;
   width: 50vw;
@@ -42,15 +42,34 @@
   height: 2rem;
 }
 
-.PictureContainer{
+.Image{
   display: flex;
   flex-direction: column;
 }
 
-.WeatherContainer {
+.Quote {
   display: flex;
   flex-direction: row;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 1px;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+}
+.Weather {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 1px;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
 }
 
 .App-header {
