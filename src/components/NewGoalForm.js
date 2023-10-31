@@ -22,7 +22,7 @@ export default function NewGoalForm() {
             <form className='TaskInputForm' onSubmit={handleSubmit}>
                 <input  className='TaskInputField' 
                         type="text" 
-                        placeholder="Input your next task" 
+                        placeholder="Input your next goal" 
                         value={input}
                         onChange={handleChange}
                 />

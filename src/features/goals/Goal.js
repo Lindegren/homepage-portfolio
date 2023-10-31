@@ -27,7 +27,7 @@ export default function Goal({text, id}) {
           <div className="CompletedGoal">
             <p> {text} </p>
             <p>This goal was completed on {date.toDateString()}</p>
-            <button onClick={remove} >Remove task</button>
+            <button onClick={remove} >Remove goal</button>
             <button onClick={markCompleted} >Mark uncompleted</button>
           </div>
         </>
@@ -36,7 +36,7 @@ export default function Goal({text, id}) {
         <>
           <div className="Goal" id={id} >
             <p> {text} </p>
-            <button onClick={remove} >Remove task</button>
+            <button onClick={remove} >Remove goal</button>
             <button onClick={markCompleted} >Mark completed</button>
           </div>
         </>
