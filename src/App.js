@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Test header</h1>
+        <h1>Homepage project</h1>
         <NewGoalForm />
         <Goals />
         <Image />
