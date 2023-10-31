@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { API_KEY } from "../../config";
+import { WEATHER_API_KEY as API_KEY } from "../../config";
 
 const lat = 57.7089;
 const long = 11.9746;

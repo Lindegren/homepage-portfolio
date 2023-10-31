@@ -23,7 +23,7 @@ const quoteSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchQuote.fulfilled, (state, action) => {
-                state.status = 'successful';
+                state.status = 'succeeded';
                 state.quote = action.payload[0];
             })
             .addCase(fetchQuote.rejected, (state, action) => {

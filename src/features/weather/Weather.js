@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectWeather, fetchWeather, selectStatus } from './weatherSlice';
+import { selectWeather, fetchWeather } from './weatherSlice';
 
 
 

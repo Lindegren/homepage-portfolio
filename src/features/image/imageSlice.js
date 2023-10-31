@@ -1,27 +1,42 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { UNSPLASH_ACCESS_KEY } from "../../config";
+
+export const fetchImage = createAsyncThunk(
+    'image/fetchImage',
+    async () => {
+        const api_url = `https://api.unsplash.com/photos/random/?count=1&client_id=${UNSPLASH_ACCESS_KEY}`;
+        const response = await fetch(api_url);
+        const json = await response.json();
+        console.log(json[0].slug);
+        return json[0];
+    }
+)
 
 const imageSlice = createSlice({
     name: 'image',
     initialState: {
-        image: {
-            id: "someID",
-            urls: {
-                raw: "https://images.unsplash.com/5/unsplash-kitsune-4.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bc01c83c3da0425e9baa6c7a9204af81",
-                regular: "https://images.unsplash.com/5/unsplash-kitsune-4.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9&s=fb86e2e09fceac9b363af536b93a1275",
-                small: "https://images.unsplash.com/5/unsplash-kitsune-4.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9&s=dd060fe209b4a56733a1dcc9b5aea53a",
-                thumb: "https://images.unsplash.com/5/unsplash-kitsune-4.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9&s=50827fd8476bfdffe6e04bc9ae0b8c02"
-            }
-        }
+        image: {},
+        status: 'idle',
+        error: null,
     },
-    reducers: {
-        generateNewImage: state => {
-            //make an API call to update the state with a new image
-        }
+    extraReducers: (builder) => {
+        builder
+        .addCase(fetchImage.pending, (state, action) => {
+            state.status = 'loading';
+        })
+        .addCase(fetchImage.fulfilled, (state, action) => {
+            state.status = 'succeeded';
+            state.image = action.payload;
+        }) 
+        .addCase(fetchImage.rejected, (state, action) => {
+            state.status = 'failed';
+            state.error = action.error.message;
+        })
     }
 });
 
-export const selectImageUrl = (state) => state.image.image.urls.small;
-
-export const {generateNewImage} = imageSlice.actions;
+export const selectImageUrls = (state) => state.image.image.urls;
+export const selectImageDescription = (state) => state.image.image.alt_description;
+export const selectImageUser = (state) => state.image.image.user;
 
 export default imageSlice.reducer;
